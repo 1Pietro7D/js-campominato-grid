@@ -23,7 +23,7 @@ inputHTML.addEventListener("click", function () {
   }
   // creiamo con un ciclo 100 elementi creando una variabile locale
 
-  for (let squareIndex = 0; squareIndex < 100; squareIndex++) {
+  for (let squareIndex = 1; squareIndex <= 100; squareIndex++) {
     const myNumbersquareRandom = getRandomNumber(0, myNumbers.length - 1);
 
     // creo degli elementi div
@@ -36,19 +36,25 @@ inputHTML.addEventListener("click", function () {
     myNumbers.splice(myNumbersquareRandom, 1);
 
     // gli implemento un evento al click e al doppio click
+    let clicked = true;
     mySquare.addEventListener("click", function () {
       console.log("hai cliccato la cella " + squareIndex);
-      mySquare.style.color = "white";
-      if (getEven(myNumbersquareRandom)) {
-        mySquare.style.backgroundColor = "red";
-      } else {
-        mySquare.style.backgroundColor = " blue";
-      }
-    });
 
-    mySquare.addEventListener("dblclick", function () {
-      mySquare.style.backgroundColor = "";
-      mySquare.style.color = "";
+      if (clicked == false) {
+        mySquare.style = "";
+
+        clicked = true;
+        console.log("clicked off");
+      } else {
+        clicked = false;
+        mySquare.style.color = "white";
+        if (getEven(myNumbersquareRandom)) {
+          mySquare.style.backgroundColor = "red";
+        } else {
+          mySquare.style.backgroundColor = " blue";
+        }
+        console.log("clicked on");
+      }
     });
 
     // aggiungo i div creati a grid e lo mettiamo dopo cosi non devo più pensarci
