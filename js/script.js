@@ -36,16 +36,14 @@ inputHTML.addEventListener("click", function () {
     myNumbers.splice(myNumbersquareRandom, 1);
 
     // gli implemento un evento al click e al doppio click
-    let clicked = true;
+    let clicked;
     mySquare.addEventListener("click", function () {
-      console.log("hai cliccato la cella " + squareIndex);
-
-      if (clicked == false) {
+      if (!clicked) {
         mySquare.style = "";
-
-        clicked = true;
         console.log("clicked off");
+        clicked = true;
       } else {
+        console.log("hai cliccato la cella " + squareIndex);
         clicked = false;
         mySquare.style.color = "white";
         if (getEven(myNumbersquareRandom)) {
